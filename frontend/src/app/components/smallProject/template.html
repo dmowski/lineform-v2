@@ -1,0 +1,18 @@
+<a href="{{getLink(project)}}">
+	<div 
+		[ngClass]="{'small-project': true, 'small-project--progress': project.workInProgress, 'small-project--admin': admin}" 
+		>
+		<!--(click)='openFullProject()'-->
+		<div class="small-project__img-container-main">
+			<div class="small-project__img-container">
+				<img
+					[ngClass]="{'loaded': config.loaded, 'non-loaded':!config.loaded}"
+					(load)="config.loaded = true"
+					(load)="centerImgPosition($event)"
+					src="{{project.img}}" alt="" class="small-project__img">
+			</div>
+		</div>
+		<h4 class="small-project__title">{{project.title}}</h4>
+		<h5 class="small-project__category">{{project.category}}</h5>
+	</div>
+</a>

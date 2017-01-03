@@ -1,0 +1,11 @@
+<div class="small-news" (click)='openFullNews()'>
+	<div class="small-news__img-container">
+		<img [ngClass]="{'loaded': config.loaded, 'non-loaded':!config.loaded}"
+			(load)="config.loaded = true" 
+			src="{{news.img}}" alt="" class="small-news__img">
+	</div>
+	<h5 class="small-news__date">{{news.date}}</h5>
+	<h4 class="small-news__title">{{news.title}}</h4>
+	<p class="small-news__text">{{news.summary}}</p>
+	<a class="small-news__admin-link" [hidden]="(admin !== true)" >Редактировать #{{news.id}}</a>
+</div>

@@ -1,0 +1,49 @@
+$desktop-lg = "only screen and (min-width: 78.5625em)" /* >= 1209px  */
+$desktop = "only screen and (max-width: 78.5em) and (min-width: 59.375em)" /* 950px -   */
+$desktop-min = "only screen and (min-width: 59.375em)" /* >= 950px */
+$tablet-max = "only screen and (max-width: 59.3125em)" /* <= 949px */
+$tablet = "only screen and (max-width: 59.3125em) and (min-width: 35.5625em)" /* 569px - 949px */
+$mobile-max = "only screen and (max-width: 35.5em)" /* <= 568px */
+$mobile = "only screen and (max-width: 35.5em) and (min-width: 10.0625em)" /* 321px -  568px */
+$mobile-sm = "only screen and (max-width: 21em)" 
+
+
+$desktop-tablet = "only screen and (max-width: 78.5em) and (min-width: 35.5625em)" /* 1208px - 569px*/
+
+$color_primary_bg = #fff
+$color_main = #35A5CB
+$main_color = $color_main
+$color_body_text = #000
+
+$border_separator = 1px solid rgba(#000, 0.2)
+
+
+default_font()
+	font 400 16px 'Noto Sans', sans-serif
+	text-decoration none
+	font-style normal
+
+truncate()
+	white-space nowrap
+	overflow hidden
+	text-overflow ellipsis
+
+clearfix()
+	&:after
+		content ""
+		display block
+		clear both
+
+card()
+	border-radius 2px
+	box-shadow 0 1px 3px 0 rgba(#000, 0.2), 0 1px 1px 0 rgba(#000, .14), 0 2px 1px -1px rgba(#000, .12)
+
+card_hover()
+	box-shadow 0 1px 3px 0 rgba(#000, 0.4), 0 1px 1px 0 rgba(#000, .3), 0 2px 1px -1px rgba(#000, .3)
+	
+
+page_header_title()
+	color $color_header_title
+	padding 30px 20px
+	margin 0
+	border-bottom $border_separator

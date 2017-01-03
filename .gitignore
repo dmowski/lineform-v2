@@ -1,0 +1,11 @@
+node_modules
+backend/node_modules
+backend/backups/*.zip
+frontend/node_modules
+build
+npm-debug.log
+.DS_Store
+.idea
+backend/toSvgConverter/img/
+backend/data/**/*.jpg
+backend/data/**/*.png

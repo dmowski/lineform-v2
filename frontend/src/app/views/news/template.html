@@ -1,0 +1,24 @@
+<main-menu 
+	[hidden]="(simple === true)"
+	[fixed]="true"></main-menu>
+
+<div
+	[hidden]="(newsList.length == 0)" 
+	[ngClass]="{'news': true, 'news__full': (simple !== true)}">
+
+	<h2 
+		[hidden]="(simple !== true)"
+		class="news__title">НОВОСТИ</h2>
+
+	<small-news 
+		admin="{{admin}}"
+		*ngFor="let news of (newsList ? newsList.slice(0, limitObjects): []) | reverse" [news]='news'
+		news="news"></small-news>
+
+	<div class="news__row">
+		<button [hidden]="(canShowMoreButton == false)"  (click)="moreObjects()" class="button button--center">Загрузить больше новостей</button>
+	</div>
+
+</div>
+
+<footer [hidden]="(simple === true)"></footer>

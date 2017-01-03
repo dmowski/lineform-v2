@@ -1,0 +1,111 @@
+<admin-menu></admin-menu>
+
+<div class="edit-project">
+	<h2 class="edit-project__page-title">Проект "{{project.title}}"</h2>
+
+	<div class="edit-project__tabs">
+		<a 
+			(click)="tabSwitch(editBlock, previewBlock, editTextBlock)"
+			[ngClass]="{'edit-project__tab': true, 'edit-project__tab--active': (editBlock.style.display == 'block')}">Общая информация</a>
+		<a 
+			(click)="tabSwitch(previewBlock, editBlock, editTextBlock)"
+			[ngClass]="{'edit-project__tab': true, 'edit-project__tab--active': (previewBlock.style.display == 'block')}">Содержание</a>
+
+		<a 
+			(click)="tabSwitch(editTextBlock, editBlock, previewBlock)"
+			[ngClass]="{'edit-project__tab': true, 'edit-project__tab--active': (editTextBlock.style.display == 'block')}">html</a>
+
+		<a (click)="deleteProject()" class="edit-project__tab edit-project__tab--right">Удалить проект</a>
+	</div>
+	
+	<div class="edit-project__edit-mode" style="display: block"  #editBlock>
+		<div class="edit-project__main">
+			<div class="edit-form">
+				<p class="edit-form__label">Заголовок</p>
+				<input type="text" [(ngModel)]="project.title" class='edit-form__title'>
+	
+				<p class="edit-form__label">
+					<label>
+						<input type="checkbox" [(ngModel)]="project.workInProgress" class='edit-form__title'>
+						Work in progress
+					</label>
+				</p>
+
+				<p class="edit-form__label">Категория</p>
+				<input type="text" class='edit-form__title' [(ngModel)]="project.category"> 
+
+				<p class="edit-form__label">Первая картинка на странице просмотра проекта</p>
+				<img src="{{project.firstImg}}" alt="">
+				<input #fileSelectFirstImg id="image-file" type="file" /><br>
+				<button (click)='addImgToFirstImg(fileSelectFirstImg)' class="button">Загрузить картинку</button>
+
+				<p class="edit-form__label">Описание</p>
+				<textarea class='edit-form__summary' [(ngModel)]="project.summary"></textarea> 
+
+				<p class="edit-form__label">Ссылка на доплнительные материалы</p>
+				<input type="text" [(ngModel)]="project.buttonHref" class='edit-form__title'>
+
+				<p class="edit-form__label">Заголовок для ссылки</p>
+				<input type="text" [(ngModel)]="project.buttonLink" class='edit-form__title'>
+
+			</div>
+		</div>
+
+		<div class="edit-project__not-main">
+			<div class="help-data">
+				<h3 class="help-data__title">Миниатюра</h3>
+				<!--img src="{{project.img}}" alt=""-->
+				<small-project [project]='project'></small-project>
+				<input #fileSelect id="image-file" class="button" type="file" />
+				<button (click)='uploadMiniImg(fileSelect)' class="button button--simple">Загрузить миниатюру</button>
+			</div>
+
+			<div class="help-data" *ngFor="let block of project.infoBlocks; let blockIndex = index">
+				<h3 class="help-data__title">Блок дополнительной информации <a (click)="deleteBlock(blockIndex)" class="help-data__delete-block">X</a></h3>
+				<input type="text" class="help-data__title-block" [(ngModel)]="block.title" placeholder="Название блока">
+				<input type="text" class="help-data__line-block" *ngFor="let line of block.lines; let i = index" [(ngModel)]="block.lines[i].value" placeholder="Строка">
+				<button class="button button--simple" (click)="block.lines.push({'value':''})">Добавить строку</button>
+			</div>
+
+			<div class="help-data">
+				<button class="button" (click)="addInfoBlock()">Добавить дополнительной информации</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="edit-project__edit-text-mode" style="display: none" #editTextBlock>
+		<p class="edit-form__label">Текст</p>
+		<textarea class='edit-form__text' [(ngModel)]="project.text"></textarea>
+	
+		<div class="load-info">
+			<p class="info">Загрузка файлов:</p>
+			<ul>
+				<li *ngFor="let fileInfo of loadInfoList">
+					<span>
+						{{fileInfo.name}}: 
+						<b>{{fileInfo.status}}</b>
+					</span>
+				</li>
+			</ul>
+		</div>
+
+		<input multiple #fileSelectFullText id="image-file" type="file" /><br>
+		<button (click)='addImgToText(fileSelectFullText, "full")' class="button">Добавить как большую картинку</button>
+		<br>
+		<button (click)='addImgToGrid2(fileSelectFullText)' class="button">В две колонки</button>
+		<br>
+		<button (click)='addImgToText(fileSelectFullText, "small")' class="button">Добавить как маленькую картинку (в центре)</button>
+		<br>
+		
+		<button (click)='addImgToText(fileSelectFullText, "half")' class="button">Добавить на половину экрана</button>
+	</div>
+
+	<div class="edit-project__view-mode" style="display: none" #previewBlock>
+		<one-admin-project simple="true" [projectData]="project"></one-admin-project>
+	</div>
+
+	<a (click)="saveProject()" class="edit-project__save-or-update-btn">+</a>
+</div>
+
+<login></login>

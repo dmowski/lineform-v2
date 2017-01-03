@@ -1,0 +1,76 @@
+.one-admin-project
+	padding-bottom 100px
+
+	&__page-date
+	&__page-title
+	&__content p
+	&__content img
+		margin-top 10px
+		margin-bottom 20px
+		width 1000px
+		margin-left calc(50% - 500px)
+		@media $desktop-tablet
+			width 95%
+			margin-left 2%
+		@media $mobile
+			width 95%
+			margin-left 2%
+
+	&__content
+		h1
+		h2
+		h3
+		h4
+		h5
+		h6
+			margin-top 10px
+			margin-bottom 20px
+			width 1000px
+			margin-left calc(50% - 500px)
+			font-size 29px
+			font-weight 600
+			margin-top 40px
+
+			@media $desktop-tablet
+				width 95%
+				margin-left 2%
+			@media $mobile
+				width 95%
+				margin-left 2%
+
+	&__page-title
+		font-size 42px
+		font-weight 600
+		border-bottom 1px solid #c2c2c2
+		margin-bottom 50px
+		margin-top 0px
+
+	&__page-date
+		margin-bottom 0px
+		color $color_main
+		margin-top 100px
+		font-size 14px
+
+	&__content p
+		font-weight 300
+		line-height 28px
+
+	img.half
+		margin-bottom 50px
+		width calc(50% - 3px)
+		float left
+		margin-left 0%
+		& + img.half
+			margin-left 3px
+
+	img.full
+		width 100%
+		margin-left 0%
+	
+	&__content img
+		@media $desktop-tablet
+			width 100%
+			margin-left 0
+		@media $mobile
+			width 100% !important
+			margin 20px 0 !important
