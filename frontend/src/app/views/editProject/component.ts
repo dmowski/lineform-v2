@@ -126,6 +126,7 @@ export class editProjectAppComponent {
 				if (result.urlFile) {
 					loadInfo.status = 'done!';
 				} else {
+					console.log(result)
 					loadInfo.status = 'error!';
 				}
 				loadInfo.result = result

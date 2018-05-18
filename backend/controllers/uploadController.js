@@ -62,16 +62,15 @@ exports.saveImg = function(req, res) {
 					},
 					function(err, resp) {
 						if (resp) {
-							res();
+							res(resp);
 						} else {
-							rej();
+							rej(err);
 						}
 					}
 				);
 			});
 		});
 	}
-
 	sharp(req.file.path)
 		.resize(2000)
 		.toFile(fileFullPath, (err, info) => {
@@ -88,7 +87,11 @@ exports.saveImg = function(req, res) {
 					var pushBig = pushToAWS(fileFullPath, bigNameFile);
 
 					Promise.all([pushSmall, pushBig]).then(() => {
+						debugger;
 						returnOk();
+					}).catch((error)=>{
+						debugger;
+						return catchError(error);
 					});
 				});
 		});

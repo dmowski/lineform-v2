@@ -45,7 +45,6 @@ exports.get = function(request, response, next) {
 	var url = config.projectsUrlStoroge;
 	requestLib.get(url, function(error, res, body) {
 		var projects = [];
-		console.log('body', body);
 		if (!error && res.statusCode == 200) {
 			projects = JSON.parse(body);
 		}
