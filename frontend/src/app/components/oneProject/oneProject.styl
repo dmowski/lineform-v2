@@ -96,7 +96,7 @@
 		margin-left 0%
 	
 	&__content img
-		min-height: 500px;
+		min-height: 400px;
 		background-color: rgba(0,0,0,.05);
 		background-image: url('/img/no_image2.png');
 		background-size: auto 100px;
@@ -105,6 +105,12 @@
 		@media $desktop-tablet
 			width 100%
 			margin-left 0
+			min-height auto
 		@media $mobile
+			min-height auto
+			width 100% !important
+			margin 20px 0 !important
+		@media $mobile-sm
+			min-height auto
 			width 100% !important
 			margin 20px 0 !important
