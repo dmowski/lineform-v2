@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const errors = require('../errors/errors');
 const fs = require('fs');
+const config = require('../config/config');
 
 function sendEmailText(toEmail, title, message, attachments) {
 	return new Promise((resolve, reject) => {
@@ -9,12 +10,12 @@ function sendEmailText(toEmail, title, message, attachments) {
 			port: 465,
 			secure: true, // secure:true for port 465, secure:false for port 587
 			auth: {
-				user: 'lineform.contact@yandex.ru',
-				pass: 'blowyabJoybNaj3'
+				user: config.emailLogin,
+				pass: config.emailPassword
 			}
 		});
 		let mailOptions = {
-			from: '"Lineform Site Contact 👻" <lineform.contact@yandex.ru>',
+			from: `"Lineform Site Contact 👻" <${config.emailLogin}>`,
 			to: toEmail,
 			subject: title,
 			text: message

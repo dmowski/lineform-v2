@@ -5,6 +5,8 @@ var config = {
 	serverPort: process.env.PORT || 1488,
 	baseDataUrlStoroge: baseDataUrlStoroge,
 	projectsUrlStoroge: projectsUrlStoroge,
+	emailLogin: process.env['EMAIL_LOGIN'],
+	emailPassword: process.env['EMAIL_PASSWORD'],
 	aws: {
 		accessKeyId: process.env['AWS_ACCESS_KEY_ID'],
 		secretAccessKey: process.env['AWS_SECRET_ACCESS_KEY'],
