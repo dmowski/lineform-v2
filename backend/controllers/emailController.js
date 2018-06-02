@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const errors = require('../errors/errors');
 const fs = require('fs');
 
-exports.sendEmailText = function(toEmail, title, message, attachments) {
+function sendEmailText(toEmail, title, message, attachments) {
 	return new Promise((resolve, reject) => {
 		let transporter = nodemailer.createTransport({
 			host: 'smtp.yandex.com',
@@ -17,8 +17,7 @@ exports.sendEmailText = function(toEmail, title, message, attachments) {
 			from: '"Lineform Site Contact 👻" <lineform.contact@yandex.ru>',
 			to: toEmail,
 			subject: title,
-			text: message,
-			html:  message
+			text: message
 		};
 
 		if (attachments) {
@@ -35,6 +34,8 @@ exports.sendEmailText = function(toEmail, title, message, attachments) {
 		});
 	});
 }
+exports.sendEmailText = sendEmailText;
+
 
 exports.sendMessage = function(request, response, next) {
 	let message = String(request.body.message);
@@ -46,8 +47,8 @@ exports.sendMessage = function(request, response, next) {
 		Сообщение: ${message}
 	`;
 
-	let sendResult = this.sendEmailText('dmowski@yandex.ru', `Сообщение на сайте Lineform (Контакт: ${contact})`, message);
-	let sendResult2 = this.sendEmailText('info@lineform.by', `Сообщение на сайте Lineform (Контакт: ${contact})`, message);
+	let sendResult = sendEmailText('dmowski@yandex.ru', `Сообщение на сайте Lineform (Контакт: ${contact})`, message);
+	let sendResult2 = sendEmailText('info@lineform.by', `Сообщение на сайте Lineform (Контакт: ${contact})`, message);
 
 	Promise.all([sendResult2, sendResult]).then(()=> {
 		response.status(200).json({
