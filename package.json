@@ -13,11 +13,13 @@
     "backend": "cd backend && npm run start",
     "start": "npm run build && npm run backend",
     "frontend": "cd frontend && npm run start",
-    "gulp": "cd frontend && gulp watch"
+    "gulp": "cd frontend && gulp watch",
+    "dev": "concurrently \"npm run gulp\" \"npm run frontend\" \"npm run backend\""
   },
   "dependencies": {
     "ejs": "2.5.6",
-    "express": "4.15.2"
+    "express": "4.15.2",
+    "concurrently": "^3.5.1"
   },
   "repository": {
     "type": "git",
