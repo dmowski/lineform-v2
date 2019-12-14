@@ -3,13 +3,12 @@
     "version": "0.2.6",
     "description": "A sample Node.js app using Express 4",
     "engines": {
-        "node": "8.9.3",
-        "npm": "6.0.0"
+        "node": "12.10.0",
+        "npm": "6.10.3"
     },
     "main": "backend/app.js",
     "scripts": {},
     "dependencies": {
-        "express": "4.15.2"
     },
     "repository": {
         "type": "git",
