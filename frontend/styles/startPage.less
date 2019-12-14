@@ -1,0 +1,42 @@
+.start-page {
+  color: #fff;
+  background-color: tomato;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  &__logo {
+    width: 800px;
+  }
+  &__info {
+    align-self: flex-end;
+  }
+  &__menu {
+    padding-top: 20px;
+  }
+  &__link {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 5px 10px;
+
+    & + & {
+      margin-right: 10px;
+    }
+    &:first-child {
+      margin-left: -8px;
+    }
+
+    &_active {
+      border-bottom: 2px solid #fff;
+    }
+
+    &:hover {
+      border-bottom: 2px solid rgba(#fff, 0.6);
+    }
+  }
+}
