@@ -3,18 +3,22 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "uikit": "node UIKit.js"
+    "uikit": "node UIKit.js",
+    "dev": "parcel UIKit.html",
+    "build": "parcel build UIKit.html"
   },
   "private": true,
   "dependencies": {
     "core-js": "3.5.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
     "eslint": "^6.7.2",
     "express": "^4.17.1",
     "husky": "^3.1.0",
+    "less": "^3.10.3",
     "lint-staged": "^9.5.0",
     "open": "^7.0.0",
     "prettier": "^1.19.1"
