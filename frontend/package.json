@@ -20,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "*.{json,css,js}": [
+    "*.{json,css,js,html}": [
       "prettier --write",
       "git add"
     ]
