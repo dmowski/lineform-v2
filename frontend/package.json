@@ -1,13 +1,28 @@
 {
-    "name": "lineform",
-    "version": "0.0.1",
-    "license": "MIT",
-    "scripts": {},
-    "private": true,
-    "dependencies": {
-        "core-js": "^2.5.5",
-        "imagemin-pngquant": "^5.1.0",
-        "normalize.css": "^8.0.0"
-    },
-    "devDependencies": {}
+  "name": "lineform",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {
+    "core-js": "3.5.0",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,css,js}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
