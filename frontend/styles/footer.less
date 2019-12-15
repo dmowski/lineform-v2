@@ -1,0 +1,44 @@
+.footer {
+  background-color: #303030;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 12px;
+  grid-column-gap: 30%;
+  grid-row-gap: 70px;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__link {
+    color: white !important;
+  }
+  &__info {
+    &_soc {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    &_vk {
+      background-image: url("../images/soc/vk.svg");
+    }
+    &_fb {
+      background-image: url("../images/soc/fb.svg");
+    }
+    &_in {
+      background-image: url("../images/soc/instagram.svg");
+    }
+    &_bh {
+      background-image: url("../images/soc/behance.svg");
+    }
+  }
+}
