@@ -6,7 +6,7 @@ class Preview extends React.Component {
         <div className="preview__img-container">
           <img
             className="preview__img"
-            src="https://s3.eu-west-2.amazonaws.com/lineform/small_1524817061159_766.jpg"
+            src={`http://placeimg.com/440/340/any?salt=${Math.random()}`}
           />
         </div>
         <h3 className="preview__title">Проект интерьера</h3>
