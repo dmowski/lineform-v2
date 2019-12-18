@@ -3,14 +3,17 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel UIKit.html",
-    "build": "parcel build UIKit.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel src/build index.html",
+    "dev-uikit": "parcel src/UIKit.html",
+    "build-uikit": "parcel src/build UIKit.html"
   },
   "private": true,
   "dependencies": {
     "core-js": "3.5.0",
     "normalize.css": "^8.0.1",
-    "parcel-bundler": "^1.12.4"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
@@ -20,6 +23,7 @@
     "less": "^3.10.3",
     "lint-staged": "^9.5.0",
     "open": "^7.0.0",
+    "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1"
   },
   "husky": {
