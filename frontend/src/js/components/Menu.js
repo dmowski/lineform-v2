@@ -7,6 +7,9 @@ class Menu extends React.Component {
   render() {
     return (
       <div className="menu">
+        <Link className="menu__link" to="/">
+          Главная
+        </Link>
         <Link className="menu__link" to="/projects">
           Проекты
         </Link>
@@ -18,6 +21,9 @@ class Menu extends React.Component {
         </Link>
         <Link className="menu__link" to="/contacts">
           Контакты
+        </Link>
+        <Link className="menu__link" to="/uikits">
+          UIkits
         </Link>
       </div>
     );
