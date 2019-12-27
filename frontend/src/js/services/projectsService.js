@@ -14,16 +14,16 @@ export class ProjectsService {
     this.dataUrl = baseService.getAPIUrl() + "projects";
   }
 
-  getProjectById(id) {
-    return this.getProjects().find(item => item.id === id);
+  async getProjectById(id) {
+    const projects = await this.getProjects();
+    return projects.find(item => item.id === id);
   }
 
-  getCategories() {
-    let listString = this.getProjects().map(item =>
-      item.category.toUpperCase()
-    );
-
-    return listString;
+  async getCategories() {
+    const projects = await this.getProjects();
+    let listString = projects.map(item => item.category.toUpperCase());
+    const uniqueCategories = [...new Set(listString)];
+    return uniqueCategories;
   }
 
   async getProjects() {

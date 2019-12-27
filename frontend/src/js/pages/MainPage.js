@@ -10,6 +10,28 @@ export class MainPage extends Component {
   projectServise;
   state = {
     projects: [],
+    mainRoute: [
+      {
+        title: "Проекты",
+        href: "/projects",
+      },
+      {
+        title: "Услуги",
+        href: "/services",
+      },
+      {
+        title: "О нас",
+        href: "/about",
+      },
+      {
+        title: "Контакты",
+        href: "/contacts",
+      },
+      {
+        title: "UIkits",
+        href: "/uikits",
+      },
+    ],
   };
   constructor() {
     super();
@@ -18,8 +40,15 @@ export class MainPage extends Component {
 
   async componentDidMount() {
     let projects = await this.projectServise.getProjects();
+    let categories = await this.projectServise.getCategories();
+    categories = categories.map(title => {
+      return {
+        title: title,
+      };
+    });
     this.setState({
       projects: projects,
+      categories: categories,
     });
   }
 
@@ -32,9 +61,9 @@ export class MainPage extends Component {
     return (
       <React.Fragment>
         <StartScreen />
-        <Menu />
+        <Menu list={this.state.mainRoute} />
 
-        <Menu />
+        <Menu list={this.state.categories} />
         <div className="preview-grid">{this.getProjectsTemplate()}</div>
         <Partners />
 
