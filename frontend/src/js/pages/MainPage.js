@@ -44,6 +44,9 @@ export class MainPage extends Component {
     categories = categories.map(title => {
       return {
         title: title,
+        clickHandler: e => {
+          console.log("e", e);
+        },
       };
     });
     this.setState({
