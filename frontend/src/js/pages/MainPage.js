@@ -33,9 +33,6 @@ export class MainPage extends Component {
       href: "/uikits",
     },
   ];
-  state = {
-    projects: [],
-  };
 
   async componentDidMount() {
     this.props.fetchProjects();
