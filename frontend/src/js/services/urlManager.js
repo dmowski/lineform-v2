@@ -1,7 +1,7 @@
 let backendUrl = "http://www.lineform.by/";
 let isDevTools = true;
 
-let baseService = {
+let urlManager = {
   getProjectsUrl: function() {
     return this.getAPIUrl() + "projects";
   },
@@ -22,4 +22,4 @@ let baseService = {
   },
 };
 
-export default baseService;
+export default urlManager;

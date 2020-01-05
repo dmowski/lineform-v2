@@ -1,9 +1,9 @@
 import { FETCH_PROJECTS } from "./types";
-import baseService from "../services/baseService";
+import urlManager from "../services/urlManager";
 
 export function fetchProjects() {
   return async function(dispatch) {
-    const urlWithProjects = baseService.getProjectsUrl();
+    const urlWithProjects = urlManager.getProjectsUrl();
     const reqResult = await fetch(urlWithProjects);
     const projects = await reqResult.json();
     dispatch({

@@ -1,4 +1,4 @@
-import baseService from "./baseService";
+import urlManager from "./urlManager";
 import axios from "axios";
 
 export class ProjectsService {
@@ -11,7 +11,7 @@ export class ProjectsService {
     }
     window.projectsService = this;
 
-    this.dataUrl = baseService.getAPIUrl() + "projects";
+    this.dataUrl = urlManager.getAPIUrl() + "projects";
   }
 
   async getProjectById(id) {
