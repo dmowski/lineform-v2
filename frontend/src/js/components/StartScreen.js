@@ -2,8 +2,22 @@ import React from "react";
 import logoImage from "../../images/logo.svg";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { defaultRoute } from "./Menu";
 
 class StartScreen extends React.Component {
+  getNavigation() {
+    return defaultRoute.map(navigateItem => {
+      return (
+        <Link
+          key={navigateItem.href}
+          className="start-screen__link"
+          to={navigateItem.href}
+        >
+          {navigateItem.title}
+        </Link>
+      );
+    });
+  }
   render() {
     return (
       <div className="start-screen">
@@ -14,20 +28,7 @@ class StartScreen extends React.Component {
             <img src={logoImage} alt="" />
           </div>
 
-          <nav className="start-screen__navigation">
-            <Link className="start-screen__link" to="/projects">
-              Проекты
-            </Link>
-            <Link className="start-screen__link" to="/services">
-              Услуги
-            </Link>
-            <Link className="start-screen__link" to="/about">
-              О нас
-            </Link>
-            <Link className="start-screen__link" to="/contacts">
-              Контакты
-            </Link>
-          </nav>
+          <nav className="start-screen__navigation">{this.getNavigation()}</nav>
         </div>
       </div>
     );

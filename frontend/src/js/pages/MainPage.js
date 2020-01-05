@@ -11,28 +11,6 @@ import { fetchProjects } from "../actions/projectActions";
 
 export class MainPage extends Component {
   projectServise;
-  mainRoute = [
-    {
-      title: "Проекты",
-      href: "/projects",
-    },
-    {
-      title: "Услуги",
-      href: "/services",
-    },
-    {
-      title: "О нас",
-      href: "/about",
-    },
-    {
-      title: "Контакты",
-      href: "/contacts",
-    },
-    {
-      title: "UIkits",
-      href: "/uikits",
-    },
-  ];
 
   async componentDidMount() {
     this.props.fetchProjects();
@@ -58,7 +36,7 @@ export class MainPage extends Component {
     return (
       <React.Fragment>
         <StartScreen />
-        <Menu list={this.mainRoute} />
+        <Menu />
 
         <div className="preview-grid">{this.getProjectsTemplate()}</div>
         <Partners />
