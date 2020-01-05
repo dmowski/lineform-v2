@@ -7,7 +7,7 @@ export class Contacts extends Component {
     return (
       <React.Fragment>
         <Menu />
-        <div class="contacts content">
+        <div className="contacts content">
           <h2>НАШИ КОНТАКТЫ</h2>
           <h3>ДИЗАЙН ИНТЕРЬЕРА, МЕБЕЛЬ</h3>
           <span>+375 (29) 871-53-56</span>
@@ -34,22 +34,22 @@ export class Contacts extends Component {
           <h4>Lineform в социальных сетях</h4>
 
           <a
-            class="contacts__vk"
+            className="contacts__vk"
             href="https://vk.com/club120593301"
             target="_blank"
           ></a>
           <a
-            class="contacts__fb"
+            className="contacts__fb"
             href="https://www.facebook.com/Lineformby/"
             target="_blank"
           ></a>
           <a
-            class="contacts__in"
+            className="contacts__in"
             href="https://www.instagram.com/lineform_design/"
             target="_blank"
           ></a>
           <a
-            class="contacts__bh"
+            className="contacts__bh"
             href="https://www.behance.net/Lineformdesign"
             target="_blank"
           ></a>

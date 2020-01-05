@@ -7,7 +7,7 @@ export class About extends Component {
     return (
       <React.Fragment>
         <Menu />
-        <div class="about content">
+        <div className="about content">
           <h2>О НАС</h2>
           <p>Беларусь. Минск. Студия дизайна, созданная в 2016 году.</p>
           <p>

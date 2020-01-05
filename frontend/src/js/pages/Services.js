@@ -7,8 +7,8 @@ export class Services extends Component {
     return (
       <React.Fragment>
         <Menu />
-        <div class="services content">
-          <h2 class="services__title">НАШИ УСЛУГИ</h2>
+        <div className="services content">
+          <h2 className="services__title">НАШИ УСЛУГИ</h2>
           <p>
             Мы занимаемся дизайном интерьера, квартир и загородных домов, жилых
             и общественных пространств,
