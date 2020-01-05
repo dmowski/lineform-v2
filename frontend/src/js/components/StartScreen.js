@@ -6,17 +6,19 @@ import { defaultRoute } from "./Menu";
 
 class StartScreen extends React.Component {
   getNavigation() {
-    return defaultRoute.map(navigateItem => {
-      return (
-        <Link
-          key={navigateItem.href}
-          className="start-screen__link"
-          to={navigateItem.href}
-        >
-          {navigateItem.title}
-        </Link>
-      );
-    });
+    return defaultRoute
+      .filter(item => item.href !== "/")
+      .map(navigateItem => {
+        return (
+          <Link
+            key={navigateItem.href}
+            className="start-screen__link"
+            to={navigateItem.href}
+          >
+            {navigateItem.title}
+          </Link>
+        );
+      });
   }
   render() {
     return (

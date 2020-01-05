@@ -3,6 +3,10 @@ import logoImage from "../../images/logo.svg";
 
 export const defaultRoute = [
   {
+    title: "Главная",
+    href: "/",
+  },
+  {
     title: "Проекты",
     href: "/projects",
   },
