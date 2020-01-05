@@ -28,14 +28,15 @@ class Preview extends React.Component {
   */
 
   render() {
-    const imgUrl = this.props.data.img;
+    const data = this.props.data || {};
+    const imgUrl = data.img;
     return (
       <div className="preview">
         <div className="preview__img-container">
           <img className="preview__img" src={imgUrl} />
         </div>
-        <h3 className="preview__title">{this.props.data.title}</h3>
-        <h5 className="preview__info">{this.props.data.category}</h5>
+        <h3 className="preview__title">{data.title}</h3>
+        <h5 className="preview__info">{data.category}</h5>
       </div>
     );
   }
