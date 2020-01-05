@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel src/index.html",
+    "start": "parcel src/index.html",
     "build": "parcel src/build index.html",
     "dev-uikit": "parcel src/UIKit.html",
     "build-uikit": "parcel src/build UIKit.html"
@@ -15,8 +15,11 @@
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "^3.3.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -46,9 +49,16 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    "last 1 chrome version",
-    "last 1 firefox version",
-    "last 1 safari version"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

@@ -6,19 +6,24 @@ import MainPage from "./pages/MainPage";
 import UIKits from "./pages/UIKits";
 import Projects from "./pages/Projects";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import store from "./store";
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Route exact path="/" component={MainPage} />
-        <Route path="/uikits" component={UIKits} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/about" component={About} />
-        <Route path="/contacts" component={Contacts} />
-        <Route path="/services" component={Services} />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/uikits" component={UIKits} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/about" component={About} />
+          <Route path="/contacts" component={Contacts} />
+          <Route path="/services" component={Services} />
+        </Router>
+      </Provider>
     );
   }
 }

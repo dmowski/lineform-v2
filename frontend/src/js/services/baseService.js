@@ -2,6 +2,9 @@ let backendUrl = "http://www.lineform.by/";
 let isDevTools = true;
 
 let baseService = {
+  getProjectsUrl: function() {
+    return this.getAPIUrl() + "projects";
+  },
   getBackendUrl: function() {
     return backendUrl;
   },

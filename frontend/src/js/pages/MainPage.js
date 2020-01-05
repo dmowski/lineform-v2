@@ -4,43 +4,43 @@ import Menu from "../components/Menu";
 import Preview from "../components/Preview";
 import Footer from "../components/Footer";
 import Partners from "../components/Partners";
-import { ProjectsService } from "../services/projectsService";
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchProjects } from "../actions/projectActions";
 
 export class MainPage extends Component {
   projectServise;
+  mainRoute = [
+    {
+      title: "Проекты",
+      href: "/projects",
+    },
+    {
+      title: "Услуги",
+      href: "/services",
+    },
+    {
+      title: "О нас",
+      href: "/about",
+    },
+    {
+      title: "Контакты",
+      href: "/contacts",
+    },
+    {
+      title: "UIkits",
+      href: "/uikits",
+    },
+  ];
   state = {
     projects: [],
-    mainRoute: [
-      {
-        title: "Проекты",
-        href: "/projects",
-      },
-      {
-        title: "Услуги",
-        href: "/services",
-      },
-      {
-        title: "О нас",
-        href: "/about",
-      },
-      {
-        title: "Контакты",
-        href: "/contacts",
-      },
-      {
-        title: "UIkits",
-        href: "/uikits",
-      },
-    ],
   };
-  constructor() {
-    super();
-    this.projectServise = new ProjectsService();
-  }
 
   async componentDidMount() {
-    let projects = await this.projectServise.getProjects();
-    let categories = await this.projectServise.getCategories();
+    this.props.fetchProjects();
+    // let projects = await this.projectServise.getProjects();
+    /*let categories = await this.projectServise.getCategories();
     categories = categories.map(title => {
       return {
         title: title,
@@ -48,25 +48,21 @@ export class MainPage extends Component {
           console.log("e", e);
         },
       };
-    });
-    this.setState({
-      projects: projects,
-      categories: categories,
-    });
+    });*/
   }
 
   getProjectsTemplate() {
-    return this.state.projects.map(project => (
+    return this.props.projects.map(project => (
       <Preview key={project.id} data={project} />
     ));
   }
   render() {
+    // <Menu list={this.state.categories} />
     return (
       <React.Fragment>
         <StartScreen />
-        <Menu list={this.state.mainRoute} />
+        <Menu list={this.mainRoute} />
 
-        <Menu list={this.state.categories} />
         <div className="preview-grid">{this.getProjectsTemplate()}</div>
         <Partners />
 
@@ -76,4 +72,15 @@ export class MainPage extends Component {
   }
 }
 
-export default MainPage;
+MainPage.propTypes = {
+  fetchProjects: PropTypes.func.isRequired,
+  projects: PropTypes.array.isRequired,
+};
+
+const mapStateToProp = state => {
+  return {
+    projects: state.project.items,
+  };
+};
+
+export default connect(mapStateToProp, { fetchProjects })(MainPage);
