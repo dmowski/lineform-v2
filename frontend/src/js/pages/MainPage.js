@@ -14,16 +14,6 @@ export class MainPage extends Component {
 
   async componentDidMount() {
     this.props.fetchProjects();
-    // let projects = await this.projectServise.getProjects();
-    /*let categories = await this.projectServise.getCategories();
-    categories = categories.map(title => {
-      return {
-        title: title,
-        clickHandler: e => {
-          console.log("e", e);
-        },
-      };
-    });*/
   }
 
   getProjectsTemplate() {
@@ -31,16 +21,30 @@ export class MainPage extends Component {
       <Preview key={project.id} data={project} />
     ));
   }
+
+  convertCategoriesArrayToMenuFormat(categories = []) {
+    return categories.map(title => {
+      return {
+        title: title,
+        clickHandler: e => {
+          console.log("e", e);
+        },
+      };
+    });
+  }
+
   render() {
-    // <Menu list={this.state.categories} />
+    const categoriesMenuList = this.convertCategoriesArrayToMenuFormat(
+      this.props.categories
+    );
+
     return (
       <React.Fragment>
         <StartScreen />
         <Menu />
-
+        <Menu list={categoriesMenuList} />
         <div className="preview-grid">{this.getProjectsTemplate()}</div>
         <Partners />
-
         <Footer />
       </React.Fragment>
     );
@@ -50,11 +54,13 @@ export class MainPage extends Component {
 MainPage.propTypes = {
   fetchProjects: PropTypes.func.isRequired,
   projects: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 const mapStateToProp = state => {
   return {
     projects: state.project.items,
+    categories: state.project.categories,
   };
 };
 

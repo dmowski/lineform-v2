@@ -6,9 +6,14 @@ export function fetchProjects() {
     const urlWithProjects = urlManager.getProjectsUrl();
     const reqResult = await fetch(urlWithProjects);
     const projects = await reqResult.json();
+
+    const categories = [
+      ...new Set(projects.map(item => item.category.toUpperCase())),
+    ];
+
     dispatch({
       type: FETCH_PROJECTS,
-      payload: projects,
+      payload: { projects, categories },
     });
   };
 }
