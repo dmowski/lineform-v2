@@ -3,7 +3,10 @@ import Menu from "../components/Menu";
 import Preview from "../components/Preview";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchProjects } from "../actions/projectActions";
+import {
+  fetchProjects,
+  viewProjectsByCategory,
+} from "../actions/projectActions";
 
 export class PreviewList extends Component {
   async componentDidMount() {
@@ -11,7 +14,7 @@ export class PreviewList extends Component {
   }
 
   getProjectsTemplate() {
-    return this.props.projects.map(project => (
+    return this.props.viewProjects.map(project => (
       <Preview key={project.id} data={project} />
     ));
   }
@@ -21,10 +24,23 @@ export class PreviewList extends Component {
       return {
         title: title,
         clickHandler: e => {
-          console.log("e", e);
+          const categoryTitle = e.detail;
+          this.props.viewProjectsByCategory(categoryTitle);
         },
       };
     });
+  }
+
+  getActiveCategory() {
+    const categories = [
+      ...new Set(
+        this.props.viewProjects.map(item => item.category.toUpperCase())
+      ),
+    ];
+
+    if (categories.length === 1) {
+      return categories[0];
+    }
   }
 
   render() {
@@ -34,7 +50,7 @@ export class PreviewList extends Component {
 
     return (
       <React.Fragment>
-        <Menu list={categoriesMenuList} />
+        <Menu list={categoriesMenuList} activeItem={this.getActiveCategory()} />
         <div className="preview-grid">{this.getProjectsTemplate()}</div>
       </React.Fragment>
     );
@@ -43,15 +59,21 @@ export class PreviewList extends Component {
 
 PreviewList.propTypes = {
   fetchProjects: PropTypes.func.isRequired,
+  viewProjectsByCategory: PropTypes.func.isRequired,
   projects: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
+  viewProjects: PropTypes.array.isRequired,
 };
 
 const mapStateToProp = state => {
   return {
     projects: state.project.items,
     categories: state.project.categories,
+    viewProjects: state.project.viewProjects,
   };
 };
 
-export default connect(mapStateToProp, { fetchProjects })(PreviewList);
+export default connect(mapStateToProp, {
+  fetchProjects,
+  viewProjectsByCategory,
+})(PreviewList);

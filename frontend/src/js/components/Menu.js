@@ -28,16 +28,29 @@ export const defaultRoute = [
   },
 ];
 class Menu extends React.Component {
+  isActiveElement(title) {
+    return this.props.activeItem && this.props.activeItem === title;
+  }
   getLinks() {
     let i = 0;
     const list = this.props.list || defaultRoute;
     return list.map(menuItem => {
+      const clickHandler = event => {
+        if (!menuItem.clickHandler) return;
+        event.detail = menuItem.title;
+        menuItem.clickHandler(event);
+      };
+
+      const isActive = this.isActiveElement(menuItem.title);
+      const activeClass = isActive ? "menu__link_active" : "";
+      const classes = `menu__link ${activeClass}`;
+
       return (
         <a
           key={i++}
-          className="menu__link"
+          className={classes}
           href={menuItem.href}
-          onClick={menuItem.clickHandler}
+          onClick={clickHandler}
         >
           {menuItem.title}
         </a>
